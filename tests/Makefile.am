@@ -95,6 +95,7 @@ EXTRA_DIST = \
 	te_ST@nouppera \
 	org.gnome.test.gschema.xml \
 	test_cairo.py \
+	test_javascriptcore.py \
 	test_error.py \
 	test_fields.py \
 	test_gio.py \

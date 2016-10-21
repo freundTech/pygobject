@@ -25,6 +25,8 @@ dnl versions of packages we require ...
 m4_define(introspection_required_version, 1.46.0)
 m4_define(py2cairo_required_version, 1.2.0)
 m4_define(py3cairo_required_version, 1.10.0)
+m4_define(py2javascriptcore_required_version, 0.0005)
+m4_define(py3javascriptcore_required_version, 0.0005)
 m4_define(glib_required_version, 2.38.0)
 m4_define(gio_required_version, 2.38.0)
 
@@ -191,6 +193,11 @@ AC_ARG_ENABLE(cairo,
     enable_cairo=$enableval,
     enable_cairo=yes)
 
+AC_ARG_ENABLE(javascriptcore,
+    AS_HELP_STRING([--enable-javascriptcore],[Enable JavaScriptCore bindings using introspection information]),
+    enable_javascriptcore=$enableval,
+    enable_javascriptcore=yes)
+
 PKG_CHECK_MODULES(GI,
     glib-2.0 >= glib_required_version
     gobject-introspection-1.0 >= introspection_required_version
@@ -213,6 +220,19 @@ if test "$enable_cairo" != no; then
     fi
 fi
 AM_CONDITIONAL(ENABLE_CAIRO, test "$enable_cairo" = "yes")
+
+if test "$enable_javascriptcore" != no; then
+    if test $build_py3k = true; then
+        PKG_CHECK_MODULES(PYJAVASCRIPTCORE,
+            py3javascriptcore >= py3javascriptcore_required_version
+        )
+    else
+        PKG_CHECK_MODULES(PYJAVASCRIPTCORE,
+            pyjavascriptcore >= py2javascriptcore_required_version
+        )
+    fi
+fi
+AM_CONDITIONAL(ENABLE_JAVASCRIPTCORE, test "$enable_javascriptcore" = "yes")
 
 AC_ARG_WITH(common,
     AS_HELP_STRING([--without-common],

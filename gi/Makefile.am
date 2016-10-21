@@ -156,6 +156,24 @@ _gi_cairo_la_LDFLAGS = \
 	$(extension_ldflags) \
 	-export-symbols-regex "init_gi_cairo|PyInit__gi_cairo"
 
+if ENABLE_JAVASCRIPTCORE
+pygi_LTLIBRARIES += _gi_javascriptcore.la
+endif
+
+_gi_javascriptcore_la_SOURCES = \
+	pygi-foreign-javascriptcore.c
+_gi_javascriptcore_la_CFLAGS = \
+	$(GI_CFLAGS) \
+	$(PYJAVASCRIPTCORE_CFLAGS)
+_gi_javascriptcore_la_CPPFLAGS = \
+	$(extension_cppflags)
+_gi_javascriptcore_la_LIBADD = \
+	$(extension_libadd) \
+	$(GI_LIBS) \
+	$(PYJAVASCRIPTCORE_LIBS)
+_gi_javascriptcore_la_LDFLAGS = \
+	$(extension_ldflags) \
+	-export-symbols-regex "init_gi_javascriptcore|PyInit__gi_javascriptcore"
 
 # This is to ensure we have a symlink to the .so in the
 # build directory, which the Python interpreter can load
