@@ -1,6 +1,6 @@
 /* -*- mode: C; c-basic-offset: 4; indent-tabs-mode: nil; -*- */
 /*
- * Copyright (c) 2010  Collabora Ltd. <http://www.collabora.co.uk/>
+ * Copyright (c) 2016  Adrian Freund <freundadrian@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
